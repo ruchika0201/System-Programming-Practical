@@ -1,0 +1,43 @@
+%{
+
+#include<stdio.h>
+#include "y.tab.h"
+
+extern int yylval;
+
+%}
+
+
+
+%%
+
+[0-9]+ {
+
+          yylval=atoi(yytext);
+
+          return NUMBER;
+
+       }
+
+[\t] ;
+
+[\n] return 0;
+
+. return yytext[0];
+
+%%
+
+int yywrap()
+
+{
+
+return 1;
+
+}
+/*Enter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Divison, Modulus and Round brackets:
+2+3*5
+
+Result=17
+
+Entered arithmetic expression is Valid
+*/
